@@ -1,0 +1,42 @@
+﻿@model IEnumerable<ToothCrystal.Models.ApplicationUser>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "/Views/Shared/_Layout.cshtml";
+
+}
+
+<div class="panel panel-default">
+    <div class="panel-heading">Manage Tooth Crystals Customers</div>
+    <div class="panel-body">
+        <div class="well well-sm">
+            <div class="row">
+                <div class="col-md-12">
+                    <a href="@Url.Action(MVC.Account.Register())">
+                        <div class="btn btn-default">
+                            <i class="fa fa-user fa-lg"></i> Create New Site User
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+        <h3>Website User List</h3>
+        <div class="well well-sm">
+
+            <div class="list-group">
+                @if (!Model.Any())
+                {
+                    <hr />
+                    <p>No Website Users!  Something is probaly wrong...</p>
+                }
+                @foreach (var user in Model)
+                {
+                    <li class="list-group-item">
+                                @user.UserName
+                            </li>
+                }
+            </div>
+        </div>
+    </div>
+</div>

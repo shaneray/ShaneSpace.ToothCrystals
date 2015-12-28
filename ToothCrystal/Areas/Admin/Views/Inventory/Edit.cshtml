@@ -1,0 +1,99 @@
+﻿@model ToothCrystal.Classes.Inventory.InventoryItemViewModel
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+@if (ViewBag.ErrorMessage != null)
+{
+    <div class="panel panel-danger">
+        <div class="panel-heading">Error!</div>
+        <div class="panel-body">
+            @ViewBag.ErrorMessage
+        </div>
+    </div>
+}
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Edit Inventory Item
+    </div>
+    <div class="panel-body">
+        <div class="well well-sm">
+            @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default" })
+        </div>
+        <h3>Inventory Item Details</h3>
+        @using (Html.BeginForm(null, null, FormMethod.Post, new { ReturnUrl = ViewBag.ReturnUrl, enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true)
+                @Html.HiddenFor(model => model.Id)
+                @Html.HiddenFor(model => model.ImageExtension)
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ProductCode, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ProductCode)
+                        @Html.ValidationMessageFor(model => model.ProductCode)
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    @Html.LabelFor(model => model.MyCode, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.MyCode)
+                        @Html.ValidationMessageFor(model => model.MyCode)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="imageFile">Image</label>
+                    <div class="col-md-10">
+                        <img style="max-height: 200px; max-height: 200px; padding: 5px;" src="@(!string.IsNullOrWhiteSpace(Model.ImageExtension) ? ToothCrystal.Areas.Admin.Controllers.InventoryController.GetImageFile(Model.Id + Model.ImageExtension) : ToothCrystal.Areas.Admin.Controllers.InventoryController.GetImageFile(Model.Id))" />
+                        <br />
+                        <input type="file" class="form-control" name="imageFile" id="imageFile" onchange="" />
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.QtyInStock, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.QtyInStock, null, new { @Class="form-control"})
+                        @Html.ValidationMessageFor(model => model.QtyInStock)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Color, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Color)
+                        @Html.ValidationMessageFor(model => model.Color)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Description, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Description)
+                        @Html.ValidationMessageFor(model => model.Description)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Save" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+

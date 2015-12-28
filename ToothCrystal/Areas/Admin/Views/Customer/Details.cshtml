@@ -1,0 +1,61 @@
+﻿@model ToothCrystal.Classes.Customer.Customer
+@using ToothCrystal.Classes.ServiceRendered;
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+<div class="panel panel-default">
+    <div class="panel-heading">Tooth Crystal Customer Info - @Html.DisplayFor(m => m.FirstName) @Html.DisplayFor(m => m.LastName)</div>
+    <div class="panel-body">
+        <div class="well well-sm">
+            <a class="btn btn-default" href="@Url.Action(MVC.Admin.Customer.Edit(Model.Id))">
+                Edit Customer Info
+            </a>
+            <a class="btn btn-default" href="@Url.Action(MVC.Admin.Customer.Delete(Model.Id))">
+                Delete Customer
+            </a>
+            <a class="btn btn-default" href="@Url.Action(MVC.Admin.Customer.Index())">
+                Back to List
+            </a>
+        </div>
+        <h3>Customer Info</h3>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.FirstName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.LastName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.LastName)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Address)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Address)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Notes)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Notes)
+            </dd>
+
+        </dl>
+
+    </div>
+</div>
+@{
+    Html.RenderPartial(MVC.Admin.ServicesRendered.Views._ServicesRenderedPartial, (List<ServiceRendered>)ViewBag.ServicesRendered);
+}

@@ -1,0 +1,71 @@
+﻿@model ToothCrystal.Classes.ServiceRendered.ServiceRendered
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        ServiceRendered Details
+    </div>
+    <div class="panel-body">
+        <div class="well well-sm">
+            @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @Class = "btn btn-default" })
+            <a href="@Url.Action(MVC.Admin.Customer.Details(Model.CustomerId))" class="btn btn-default">Back to Customer</a>
+        </div>
+        <h3>Item Details</h3>
+
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Service)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Service)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CustomerName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CustomerName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CustomerId)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CustomerId)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.AmountPaid)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.AmountPaid)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.TipAmount)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TipAmount)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Notes)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Notes)
+            </dd>
+
+        </dl>
+    </div>
+</div>
+

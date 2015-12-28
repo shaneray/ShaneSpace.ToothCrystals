@@ -1,0 +1,70 @@
+﻿@using System.Web.UI.WebControls
+@model IEnumerable<ToothCrystal.Classes.ServiceRendered.ServiceRendered>
+
+@{
+	ViewBag.Title = "Index";
+	Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+
+<div class="panel panel-default">
+	<div class="panel-heading">
+		Services Rendered for @ViewBag.CustomerName
+	</div>
+	<div class="panel-body">
+		<div class="well well-sm">
+			@Html.ActionLink("Add New Service Rendered", "Create", routeValues: new{ id=ViewBag.Id}, htmlAttributes: new { @Class="btn btn-default"})
+		</div>
+		<h3>Services Rendered (Total: @Model.Count())</h3>
+		<div class="table-responsive">
+		<table class="table table-bordered table-condensed table-hover">
+		<thead>
+	<tr>
+		<th>
+			@Html.DisplayNameFor(model => model.Service)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.AmountPaid)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.TipAmount)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Notes)
+		</th>
+		<th>Actions</th>
+		</tr>
+	</thead>
+
+@foreach (var item in Model) {
+	<tr>
+		<td>
+			@Html.DisplayFor(modelItem => item.Service)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.AmountPaid)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.TipAmount)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.Notes)
+		</td>
+		<td>
+			@Html.ActionLink("Edit", "Edit", new { id=item.Id }, new { @Class="btn btn-default"})
+			@Html.ActionLink("Details", "Details", new { id=item.Id }, new { @Class="btn btn-default"})
+			@Html.ActionLink("Delete", "Delete", new { id=item.Id }, new { @Class="btn btn-default"})
+		</td>
+	</tr>
+}
+
+</table>
+</div>
+</div>
+</div>
+
+
+

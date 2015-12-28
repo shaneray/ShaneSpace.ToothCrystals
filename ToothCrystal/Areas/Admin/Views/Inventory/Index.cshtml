@@ -1,0 +1,78 @@
+﻿@model IEnumerable<ToothCrystal.Classes.Inventory.InventoryItem>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Tooth Crystal Inventory
+    </div>
+    <div class="panel-body">
+        <div class="well well-sm">
+            <a href="@Url.Action(@MVC.Admin.Inventory.Create())" class="btn btn-default">Add Inventory Item</a>
+        </div>
+        <h3>Inventory Items (Total: @Model.Count())</h3>
+        <div class="table-responsive">
+        <table class="table table-bordered table-condensed table-hover">
+            <thead>
+                <tr>
+                    <th class="text-center">
+                        Image
+                    </th>
+                    <th class="text-center">
+                        @Html.DisplayNameFor(model => model.ProductCode)
+                    </th>
+                    <th class="text-center">
+                        @Html.DisplayNameFor(model => model.MyCode)
+                    </th>
+                    <th class="text-center">
+                        @Html.DisplayNameFor(model => model.QtyInStock)
+                    </th>
+                    <th class="text-center">
+                        @Html.DisplayNameFor(model => model.Color)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Description)
+                    </th>
+                    <th class="text-center">Actions</th>
+                </tr>
+            </thead>
+            @foreach (var item in Model) {
+                <tr>
+                    <td class="text-center">
+                        <img style="max-height: 100px; max-width: 100px;" class="img-rounded" src="@(!string.IsNullOrWhiteSpace(item.ImageExtension) ? ToothCrystal.Areas.Admin.Controllers.InventoryController.GetImageFile(item.Id + item.ImageExtension) : ToothCrystal.Areas.Admin.Controllers.InventoryController.GetImageFile(item.Id))" />
+                    </td>
+                    <td class="text-center">
+                        @Html.DisplayFor(modelItem => item.ProductCode)
+                    </td>
+                    <td class="text-center">
+                        @if (item.MyCode != 0)
+                        {
+                            Html.DisplayFor(modelItem => item.MyCode);
+                        }
+                    </td>
+                    <td class="text-center">
+                        @Html.DisplayFor(modelItem => item.QtyInStock)
+                    </td>
+                    <td class="text-center">
+                        @Html.DisplayFor(modelItem => item.Color)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td class="text-center">
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @Class = "btn btn-default" })
+                        @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @Class = "btn btn-default" })
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @Class = "btn btn-default" })
+                    </td>
+                </tr>
+            }
+
+        </table>
+        </div>
+            
+    </div>
+</div>
+

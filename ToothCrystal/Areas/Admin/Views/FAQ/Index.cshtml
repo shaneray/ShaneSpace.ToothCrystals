@@ -1,0 +1,26 @@
+﻿@model IEnumerable<ToothCrystal.Classes.FAQ.FaqObject>
+
+@{
+    ViewBag.Title = "FAQ Admin";
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+<h2>FAQ</h2>
+<div class="well well-sm">
+    <a href="@Url.Action(MVC.Admin.FAQ.Create())"><div class="btn btn-default">Create New</div></a>
+</div>
+@foreach (var item in Model)
+{
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <strong>Q:</strong> @Html.DisplayFor(modelItem => item.Question)
+            <span class="pull-right">
+                @Html.ActionLink("Edit", "Edit", new { item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { item.Id })
+            </span>
+        </div>
+        <div class="panel-body">
+            <strong>A:</strong> @Html.DisplayFor(modelItem => item.Answer)
+        </div>
+    </div>
+}

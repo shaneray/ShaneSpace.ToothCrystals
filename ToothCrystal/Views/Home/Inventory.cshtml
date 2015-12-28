@@ -1,0 +1,34 @@
+﻿@model IEnumerable<ToothCrystal.Classes.Inventory.InventoryItem>
+
+@{
+    ViewBag.Title = "Inventory";
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+<style>
+    #inventoryList li {
+        float: left;
+        padding-right: 20px;
+        list-style-type: none;
+        min-height: 150px;
+        width: 150px;
+    }
+</style>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Inventory Items
+    </div>
+    <div class="panel-body">
+        <ul id="inventoryList">
+            @foreach (var item in Model)
+            {
+                <li>
+                    <div class="text-center">
+                    <img style="max-height: 100px; max-width: 100px;" class="img-rounded" src="@(!string.IsNullOrWhiteSpace(item.ImageExtension) ? ToothCrystal.Areas.Admin.Controllers.InventoryController.GetImageFile(item.Id + item.ImageExtension) : ToothCrystal.Areas.Admin.Controllers.InventoryController.GetImageFile(item.Id))" />
+                    <br />
+                        @Html.DisplayFor(modelItem => item.Color)
+                    </div>
+                </li>
+            }
+        </ul>
+    </div>
+</div>

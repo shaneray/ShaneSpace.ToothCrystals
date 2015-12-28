@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<img src="/Content/images/ToothCrystalLogo_black.png" class="img-rounded" style="margin-bottom: 10px; border: 1px solid black; width: 100%;" />
+
+<h1>Coming Soon!</h1>
+
+<div class="jumbotron">
+    <p class="lead" style="text-align: center;">
+        If you are in the Louisville area, and are interested in one of the Tooth Crystals pictured below, please visit this page again soon for updates on how you can get your own.
+    </p>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        @{ Html.RenderPartial("_PicturePanel"); }
+    </div>
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading"><h6>Options</h6></div>
+            <div class="panel-body">
+                <p>Different Color Options.</p>
+                <p>Different Size Options.</p>
+                <p>Different Shape Options.</p>
+                <p>Different Arrangement Options.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading"><h6>Semi-Permanent</h6></div>
+            <div class="panel-body">
+                <p>
+                    This is where we can put more information regarding the glue.
+                </p>
+                <ol>
+                    <li>Fact One</li>
+                    <li>Fact Two</li>
+                    <li>Fact Three</li>
+                    <li>Fact Four</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,18 @@
+﻿@using Raven.Client.Linq
+@model System.Web.Mvc.HandleErrorInfo
+
+@{
+    ViewBag.Title = "Error";
+}
+
+<div class="panel panel-danger">
+    <div class="panel-heading">Error!</div>
+    <div class="panel-body">
+        An error occurred while processing your request.  Please try again later.
+        <br />
+        <a class="btn btn-default" href="javascript:history.back();">Back</a>
+        <br />
+        <h3>Addition Details</h3>
+        @Model.Exception
+    </div>
+</div>

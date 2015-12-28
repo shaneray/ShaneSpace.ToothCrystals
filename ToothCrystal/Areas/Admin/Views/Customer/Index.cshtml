@@ -1,0 +1,41 @@
+﻿@using ToothCrystal.Classes.Customer
+@model IList<ToothCrystal.Classes.Customer.Customer>
+@{
+    ViewBag.Title = "Index";
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+<div class="panel panel-default">
+    <div class="panel-heading">Manage Tooth Crystals Customers</div>
+    <div class="panel-body">
+        <div class="well well-sm">
+            <div class="row">
+                <div class="col-md-12">
+                    <a href="@Url.Action(MVC.Admin.Customer.Create())">
+                        <div class="btn btn-default">
+                            <i class="fa fa-user fa-lg"></i> Create New Customer
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+        <h3>Customer List</h3>
+        <div class="well well-sm">
+
+            <div class="list-group">
+                @if (!Model.Any())
+                {
+                    <hr />
+                    <p>No Customers!  Get to selling...</p>
+                }
+                @foreach (Customer customer in Model)
+                {
+                    <a class="list-group-item" href="@Url.Action(MVC.Admin.Customer.Details(customer.Id))"><i class="fa fa-user"></i> @customer.FirstName @customer.LastName</a>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+

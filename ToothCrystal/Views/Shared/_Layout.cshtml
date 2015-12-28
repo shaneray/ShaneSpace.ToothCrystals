@@ -1,0 +1,96 @@
+﻿@using Raven.Client.Linq
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <!-- Apple Default -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="apple-touch-icon" href="/Content/images/crystal.png">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0;">
+
+    <!-- iPhone -->
+    <link rel="apple-touch-startup-image" media="(device-width: 320px)" href="/Content/images/apple-touch-startup-image-320x480.png">
+
+    <!-- iPhone (Retina) -->
+    <link rel="apple-touch-startup-image" media="(device-width: 320px) and (-webkit-device-pixel-ratio: 2)" href="/Content/images/apple-touch-startup-image-640x920.png">
+
+
+    <title>@ViewBag.Title - Tooth Crystal's by Stacey</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="navbar navbar-default navbar-fixed-top">
+
+        <div class="container">
+            <div class="navbar-brand" style="padding: 11px; font-size: 100%;">
+                <a href="@Url.Action(MVC.Home.Index())" style="text-decoration: none;">
+                    <img src="/Content/images/crystal.png" style="height: 30px;" /> Tooth Crystals by Stacey
+                </a>
+            </div>
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li id="Users"><a href="@Url.Action(MVC.Home.Index())"><i class="fa fa-home fa-lg"></i> Home</a></li>
+
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-key fa-lg"></i> Admin<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="@Url.Action(MVC.Account.Manage())"><i class="fa fa-user fa-lg"></i> My account</a></li>
+                                <li class="divider"></li>
+                                <li><a href="@Url.Action(MVC.Admin.SiteUsers.Index())"><i class="fa fa-globe fa-lg"></i> Website Users</a></li>
+                                <li><a href="@Url.Action(MVC.Admin.Customer.Index())"><i class="fa fa-users"></i> Manage Customers</a></li>
+                                <li><a href="@Url.Action(MVC.Admin.Inventory.Index())"><i class="fa fa-picture-o"></i> Manage Inventory</a></li>
+                                <li><a href="@Url.Action(MVC.Admin.FAQ.Index())"><i class="fa fa-info-circle fa-lg"></i> Update FAQ</a></li>
+                                <li class="divider"></li>
+                                @Html.Partial("_LoginPartial")
+                            </ul>
+                        </li>
+                    }
+                    <li id="Users"><a href="@Url.Action(MVC.Home.Inventory())"><i class="fa fa-info-circle fa-lg"></i> Inventory</a></li>
+                    <li id="Users"><a href="@Url.Action(MVC.Home.BodyJewelry())"><i class="fa fa-info-circle fa-lg"></i> Body Jewelry</a></li>
+                    <li id="Users"><a href="@Url.Action(MVC.Home.Contact())"><i class="fa fa-phone fa-lg"></i> Contact</a></li>
+                    <li id="Users"><a href="@Url.Action(MVC.Home.Faq())"><i class="fa fa-question-circle fa-lg"></i> FAQ</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>
+                @if (Request.IsAuthenticated)
+                {
+                    <strong>&copy;</strong>
+                }
+                else
+                {
+                    <strong><a style="text-decoration: none;" href="@Url.Action(MVC.Account.Login())">&copy;</a></strong>
+                } @DateTime.Now.Year - Tooth Crystals by Stacey
+            </p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <script src="~/Scripts/WebAppLinkHelper.js"></script>
+    <script src="~/Scripts/jquery.fancybox.js"></script>
+    <script>
+        $("a.homeCarouselImage").fancybox({
+
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,96 @@
+﻿@model ToothCrystal.Areas.Admin.Models.ServicesRendered.ServiceRenderedViewModel
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+
+
+@if (ViewBag.ErrorMessage != null)
+{
+    <div class="panel panel-danger">
+        <div class="panel-heading">Error!</div>
+        <div class="panel-body">
+            @ViewBag.ErrorMessage
+        </div>
+    </div>
+}
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Edit Service Rendered
+    </div>
+    <div class="panel-body">
+        <div class="well well-sm">
+            @Html.ActionLink("Back to Customer Info", "Details","Customer", new { id = Model.CustomerId}, new { @class = "btn btn-default" })
+        </div>
+        <h3>Service Rendered Details</h3>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.CustomerId)
+
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.CustomerName, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CustomerName)
+                @Html.ValidationMessageFor(model => model.CustomerName)
+            </div>
+        </div>
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.DateTime, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DateTime)
+                @Html.ValidationMessageFor(model => model.DateTime)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Service, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Service)
+                @Html.ValidationMessageFor(model => model.Service)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AmountPaid, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.AmountPaid)
+                @Html.ValidationMessageFor(model => model.AmountPaid)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TipAmount, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TipAmount)
+                @Html.ValidationMessageFor(model => model.TipAmount)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Notes, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Notes)
+                @Html.ValidationMessageFor(model => model.Notes)
+            </div>
+        </div>
+
+         <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Save" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

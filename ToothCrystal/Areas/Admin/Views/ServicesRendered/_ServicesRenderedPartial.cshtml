@@ -1,0 +1,67 @@
+﻿@model IEnumerable<ToothCrystal.Classes.ServiceRendered.ServiceRendered>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Services Rendered
+    </div>
+    <div class="panel-body">
+        <div class="well well-sm">
+
+            <a href="@Url.Action(MVC.Admin.ServicesRendered.Create((string)ViewBag.CustomerId))" class="btn btn-default">Add New Service Rendered</a>
+        </div>
+        <h3>Services Rendered Items (Total: @Model.Count())</h3>
+        <div class="table-responsive">
+            <table class="table table-bordered table-condensed table-hover">
+                <thead>
+                    <tr>
+                        <th class="text-center">
+                            @Html.DisplayNameFor(model => model.Service)
+                        </th>
+                        @*<th class="text-center">
+                                @Html.DisplayNameFor(model => model.CustomerId)
+                            </th>*@
+                        <th class="text-center">
+                            @Html.DisplayNameFor(model => model.AmountPaid)
+                        </th>
+                        <th class="text-center">
+                            @Html.DisplayNameFor(model => model.TipAmount)
+                        </th>
+                        <th class="text-center">
+                            @Html.DisplayNameFor(model => model.Notes)
+                        </th>
+                        <th class="text-center">
+                            Actions
+                        </th>
+                    </tr>
+                </thead>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="text-center">
+                            @Html.DisplayFor(modelItem => item.Service)
+                        </td>
+                        @*<td>
+                                @Html.DisplayFor(modelItem => item.CustomerId)
+                            </td>*@
+                        <td class="text-center">
+                            $@Html.DisplayFor(modelItem => item.AmountPaid)
+                        </td>
+                        <td class="text-center">
+                            $@Html.DisplayFor(modelItem => item.TipAmount)
+                        </td>
+                        <td class="text-center">
+                            @Html.DisplayFor(modelItem => item.Notes)
+        </td>
+        <td style="min-width: 50px;" class="text-center">
+            @Html.ActionLink("Edit", "Edit", "ServicesRendered", new { id = item.Id }, new { @Class = "btn btn-default" })
+            @Html.ActionLink("Details", "Details", "ServicesRendered", new { id = item.Id }, new { @Class = "btn btn-default" })
+            @Html.ActionLink("Delete", "Delete", "ServicesRendered", new { id = item.Id }, new { @Class = "btn btn-default" })
+        </td>
+    </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+</div>

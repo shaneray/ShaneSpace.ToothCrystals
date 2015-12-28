@@ -1,0 +1,20 @@
+﻿@model IEnumerable<ToothCrystal.Classes.FAQ.FaqObject>
+
+@{
+    ViewBag.Title = "FAQ";
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+<h2>FAQ</h2>
+
+@foreach (var item in Model)
+{
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <strong>Q:</strong> @Html.DisplayFor(modelItem => item.Question)
+        </div>
+        <div class="panel-body">
+            <strong>A:</strong> @Html.DisplayFor(modelItem => item.Answer)
+        </div>
+    </div>
+}

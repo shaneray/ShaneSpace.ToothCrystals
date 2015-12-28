@@ -1,0 +1,90 @@
+﻿body {
+    padding-top: 80px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+/*input,
+select,
+textarea {
+    max-width: 280px;
+}*/
+
+/* styles for validation helpers */
+.field-validation-error {
+    color: #b94a48;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 1px solid #b94a48;
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+.validation-summary-errors {
+    color: #b94a48;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+#homeCarouselImages img {
+    max-height: 200px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.fancyText {
+    -ms-text-shadow: -0.1em -0.0em 0.2em #000, 0.1em 0.1em 0.4em #55679F, 0.1em 0.1em .6em #55679F, 0.1em 0.1em .8em #55679F, 0.1em 0.1em 1em #55679F;
+    -webkit-text-shadow: -0.1em -0.0em 0.2em #000, 0.1em 0.1em 0.4em #55679F, 0.1em 0.1em .6em #55679F, 0.1em 0.1em .8em #55679F, 0.1em 0.1em 1em #55679F;
+    text-shadow: -0.1em -0.0em 0.2em #000, 0.1em 0.1em 0.4em #55679F, 0.1em 0.1em .6em #55679F, 0.1em 0.1em .8em #55679F, 0.1em 0.1em 1em #55679F;
+}
+
+.indent {
+    margin-left: 10px;
+}
+
+.menuIcon {
+    padding-top: 3px;
+    padding-left: 20px;
+}
+
+.logOff {
+    clear: both;
+    font-weight: normal;
+    line-height: 1.428571429;
+    color: #c8c8c8;
+    white-space: nowrap;
+    text-decoration: none;
+}
+
+    div.logOff a:hover {
+        text-decoration: none !important;
+        color: #ffffff !important;
+        background-color: #272b30 !important;
+    }
+.max-width {
+    width: 100%;
+}
+textarea {
+    width: 100%;
+}
+h1,h2,h3,h4.h,h5,h6 {
+    margin-top: 0;
+}
+.table thead {
+    background-color: #1C1E22;
+}
